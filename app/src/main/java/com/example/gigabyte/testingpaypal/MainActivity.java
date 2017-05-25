@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     EditText m_response;
     PayPalConfiguration m_configuration;
     //id is the link to the paypal account
-    String m_paypalClientId;
+    String m_paypalClientId = "AazFZxoqNz-Vxnrbl4CgUfQ0iSaUiTFs5fWcJJedCB-GiEhK3W05SVBbUx8AC8u0BJJjSD9KfBQ0XWC4";
     Intent m_service;
     int m_paypalRequestCode = 999;
 
@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
     void pay(View view){
         PayPalPayment payment = new PayPalPayment(new BigDecimal(10), "USD", "Test payment with paypal", PayPalPayment.PAYMENT_INTENT_SALE );
-        Intent intent = new Intent(this, PayPalPayment.class);
+
+        Intent intent = new Intent(this, PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, m_configuration);
         intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
         startActivityForResult(intent, m_paypalRequestCode);
